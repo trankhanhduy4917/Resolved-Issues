@@ -7,18 +7,22 @@ int main() {
     cin.tie(0);
     cout.tie(0);
 
-    int n, m, postponed = 0, total = 0;
-    cin >> n >> m;
+    long long n;
+    cin >> n;
 
+    long long sum = 0, last;
     for (int i = 0, x; i < n; i++) {
         cin >> x;
-        if (x >= m) {
-            postponed++;
-            total += x;
+        if (i > 0) {
+            if (x < last) {
+                sum += last - x;
+                x += last - x;
+            }
         }
+        last = x;
     }
 
-    cout << postponed << " " << total;
+    cout << sum;
     
     return 0;
 }
