@@ -1,6 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void solve(int n) {
+    vector<long long>  A(n), B(n - 1);
+    for (int i = 0; i < n - 1; i++) cin >> B[i];
+    A[0] = B[0];
+    for (int i = 1; i < n - 1; i++) A[i] = lcm(B[i - 1], B[i]);
+    A[n - 1] = B[n - 2];
+    for (int i = 0; i < n - 1; i++) {
+        if (gcd(A[i], A[i + 1]) != B[i]) {
+            cout << -1 << '\n';
+            return;
+        }
+    }
+
+    for (int i = 0; i < n; i++) cout << A[i] << " ";
+    cout << '\n';
+}
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -13,27 +30,7 @@ int main() {
     while (t--) {
         int n;
         cin >> n;
-        vector<long long>  A(n), B(n - 1), k(n, 0);
-        for (int i = 0; i < n - 1; i++) cin >> B[i];
-
-        A[0] = A[1] = B[0];
-        k[0] = k[1] = 1;
-        int i = 2, j = 1;
-        while (j != n - 1) {
-            if (k[i] == 0) {
-                if (A[i - 1] % B[j] == 0) {
-                    A[i] = B[j];
-                    i++;
-                    j++;
-                } else {
-                    if (A[i - 1] > B[j]) {
-
-                    } else {
-
-                    }
-                }
-            }
-        }
+        solve(n);
     }
     return 0;
 }
