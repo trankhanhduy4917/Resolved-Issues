@@ -1,1 +1,11 @@
 .cph/
+*.exe
+*.o
+*.out
+*.inp
+*.bin
+input.txt
+output.txt
+Computer Vision and Image Processing (CVIP)/
+.agents/
+AGENTS.md
